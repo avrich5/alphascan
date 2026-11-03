@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alphascan"
+version = "0.2.0"
+description = "Statistical gate for trading entry ideas: excess over drift, bootstrap CI against cost, selection transfer test."
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "Andriy Chyrva"}]
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "pandas>=2.0"]
+
+[project.optional-dependencies]
+fetch = ["ccxt>=4"]
+ta = ["TA-Lib>=0.6"]
+mcp = ["mcp>=1.2", "ccxt>=4", "TA-Lib>=0.6"]
+parquet = ["pyarrow"]
+test = ["pytest"]
+
+[project.scripts]
+alphascan-mcp = "alphascan.mcp_server:main"
+
+[tool.setuptools]
+packages = ["alphascan"]
